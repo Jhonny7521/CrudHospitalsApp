@@ -1,0 +1,33 @@
+<div th:fragment="general-header" class="container">
+<meta charset="UTF-8">
+<div class="col-12">
+ 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+		    <a class="navbar-brand" th:href="@{/hospital/home}"> <img alt="logo" th:src="@{/images/logo-t1.png}" style="height: 2.5rem;"> </a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNav">
+		      <ul class="navbar-nav">
+		        <li class="nav-item">
+		          <a class="nav-link" th:href="@{/condition/}">Condiciones</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" th:href="@{/location/}">Sedes</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" th:href="@{/manager/}">Gerentes</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" th:href="@{/district/}">Distritos</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" th:href="@{/province/}">Provincias</a>
+		        </li>
+		      </ul>
+		    </div>
+		    <a class="nav-link" th:href="@{/logout}">Cerrar sesión</a>
+		</div>
+	</nav>
+</div>	
+</div>

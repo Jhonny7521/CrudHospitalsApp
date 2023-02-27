@@ -1,0 +1,84 @@
+
+<meta charset="UTF-8">
+ 	<form th:fragment="hospital-form" th:action="@{/hospital/save}" th:object="${hospital}" method="post">  
+ 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">            
+		<div class="col">
+			<input type="hidden" th:field="*{id}" >
+			<input type="hidden" th:field="*{createdAt}" >
+		    <div class="col"> 
+		      <div class="form-group">
+		        <label for="hospitalName">Nombre</label>
+		        <input type="text" class="form-control" th:field="*{hospitalName}" id="hospitalName" name="hospitalName" placeholder="Ingrese el nombre del hospital">
+		        <small class="form-text text-danger" th:if="${#fields.hasErrors('hospitalName')}" th:errors="*{hospitalName}"></small>
+		      </div>
+		    </div>
+		    <div class="col"> 
+		      <div class="form-group">
+		        <label for="hospitalAge">Antiguedad</label>
+		        <input type="number" class="form-control" th:field="*{hospitalAge}" id="hospitalAge" name="hospitalAge" placeholder="Ingrese la antiguedad del hospital">
+		        <small class="form-text text-danger" th:if="${#fields.hasErrors('hospitalAge')}" th:errors="*{hospitalAge}"></small>
+		      </div> 
+		    </div>
+		    <div class="col"> 
+		      <div class="form-group">
+		        <label for="hospitalArea">Área</label>
+		        <input type="number" step="0.01" min="0" class="form-control" th:field="*{hospitalArea}" id="hospitalArea" name="hospitalArea" placeholder="Ingrese el área del hospital">
+		        <small class="form-text text-danger" th:if="${#fields.hasErrors('hospitalArea')}" th:errors="*{hospitalArea}"></small>
+		      </div> 
+		    </div> 
+		    
+            <div class="col"> 
+              <div class="form-group">
+                <label for="manager">Manager</label>
+                <select class="form-control" th:field="*{manager.id}">
+                  <option th:each="manager : ${managers}" 
+                    th:value="${manager.id}" 
+                    th:text="${manager.managerDescription}"></option>                     
+                </select>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('manager.id')}" th:errors="*{manager.id}"></small>
+              </div>
+            </div>
+            
+            <div class="col"> 
+              <div class="form-group">
+                <label for="condition">Condición</label>
+                <select class="form-control" th:field="*{condition.id}">
+                  <option th:each="condition : ${conditions}" 
+                    th:value="${condition.id}" 
+                    th:text="${condition.conditionDescription}"></option>                     
+                </select>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('condition.id')}" th:errors="*{condition.id}"></small>
+              </div>
+            </div>
+            
+            <div class="col"> 
+              <div class="form-group">
+                <label for="district">Distrito</label>
+                <select class="form-control" th:field="*{district.id}">
+                  <option th:each="district : ${districts}" 
+                    th:value="${district.id}" 
+                    th:text="${district.districtDescription}"></option>                     
+                </select>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('district.id')}" th:errors="*{district.id}"></small>
+              </div>
+            </div>
+            
+            <div class="col"> 
+              <div class="form-group">
+                <label for="location">Sede</label>
+                <select class="form-control" th:field="*{location.id}">
+                  <option th:each="location : ${locations}" 
+                    th:value="${location.id}" 
+                    th:text="${location.locationDescription}"></option>                     
+                </select>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('location.id')}" th:errors="*{location.id}"></small>
+              </div>
+            </div>
+            
+		</div>                  
+	  	<hr>
+	  	<div class="d-flex gap-1 flew-row justify-content-start aligin-items-center">
+		  	<a th:href="@{/hospital/find}" class="btn btn-primary mt-3" role="button" title="Regresar"><i class="bi bi-arrow-left-circle"></i> Volver</a>
+			<button type="submit" class="btn btn-primary mt-3" title="Guardar">Guardar</button>  
+	  	</div>
+	</form>
